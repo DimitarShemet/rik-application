@@ -1,0 +1,55 @@
+.wrapper {
+  background-color: white;
+  border-radius: 8px;
+  margin-top: 40px;
+  padding: 20px 55px 20px 35px;
+  color: red;
+}
+
+h3 {
+  color: black;
+  font-weight: 700;
+  font-size: 20px;
+}
+form {
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+}
+.fields-wrap {
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  .item-wrap {
+    display: flex;
+    flex-direction: column;
+  }
+  mat-form-field {
+    margin-right: 45px;
+    width: 294px;
+  }
+}
+
+.btn-list {
+  display: flex;
+  margin-top: 15px;
+  button:first-child {
+    margin-left: 0;
+  }
+  button {
+    background-color: #da2032;
+    font-size: 16px;
+    margin-left: 15px;
+    color: #ffffff;
+    font-family: "Moscow Sans", sans-serif;
+  }
+}
+label {
+  font-weight: 700;
+  font-size: 16px;
+  color: black;
+  margin-bottom: 5px;
+}
+label.invalid {
+  color: #f44336;
+}

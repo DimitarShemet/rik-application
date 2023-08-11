@@ -1,0 +1,22 @@
+.header {
+  background-color: #da2032;
+  height: 70px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+.user-info {
+  display: flex;
+  margin-right: 60px;
+  .text {
+    display: flex;
+    flex-direction: column;
+    font-weight: 700;
+    font-size: 14px;
+    color: white;
+  }
+  .avatar {
+    align-self: flex-start;
+    margin-right: 7px;
+  }
+}

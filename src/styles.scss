@@ -1,0 +1,43 @@
+/* You can add global styles to this file, and also import other style files */
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: "Moscow Sans", sans-serif;
+}
+
+button {
+  background-color: #da2032;
+  font-size: 10px;
+  margin-left: 15px;
+}
+@font-face {
+  font-family: "Moscow Sans";
+  src: url("../src/assets/fonts/moscowsansregular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+.mdc-button__label {
+  display: flex;
+}
+.mdc-list-item__primary-text {
+  font-family: inherit;
+}
+.mdc-list-item.mdc-list-item--with-one-line {
+  height: auto !important;
+}
+.validation {
+  color: red;
+  position: absolute;
+  font-family: "Moscow Sans";
+  font-weight: 300;
+  font-size: 14px;
+  bottom: -24px;
+  left: -10px;
+}
+mat-form-field {
+  position: relative;
+}

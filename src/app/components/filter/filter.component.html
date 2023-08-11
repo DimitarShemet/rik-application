@@ -1,0 +1,116 @@
+<div class="wrapper">
+  <h3>Фильтр</h3>
+  <form [formGroup]="form" (ngSubmit)="submitForm()">
+    <div class="fields-wrap">
+      <div class="item-wrap">
+        <label for="login" [ngClass]="name.invalid ? 'invalid' : 'valid'"
+          >Логин</label
+        >
+        <mat-form-field appearance="outline">
+          <input
+            matInput
+            formControlName="name"
+            id="login"
+            (input)="trimValue('name')"
+          />
+          <small class="validation" *ngIf="name.dirty && name.errors">
+            Недопустимые символы
+          </small>
+        </mat-form-field>
+      </div>
+      <div class="item-wrap">
+        <label for="phone" [ngClass]="phone.invalid ? 'invalid' : 'valid'"
+          >Телефон</label
+        >
+        <mat-form-field appearance="outline">
+          <input
+            matInput
+            formControlName="phone"
+            id="phone"
+            (input)="trimValue('phone')"
+          />
+          <small class="validation" *ngIf="phone.dirty && phone.errors">
+            Недопустимые символы
+          </small>
+        </mat-form-field>
+      </div>
+      <div class="item-wrap">
+        <label for="create_date">Дата создания</label>
+        <mat-form-field appearance="outline">
+          <input
+            matInput
+            [matDatepicker]="create"
+            formControlName="create_at"
+            id="create_date"
+          />
+          <mat-datepicker-toggle
+            matIconSuffix
+            [for]="create"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #create></mat-datepicker>
+        </mat-form-field>
+      </div>
+      <div class="item-wrap">
+        <label for="status">Статус</label>
+        <mat-form-field appearance="outline">
+          <mat-select formControlName="status" id="status">
+            <mat-option value="ACTIVE">Активен</mat-option>
+            <mat-option value="blocked">Заблокирован</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="item-wrap">
+        <label for="email" [ngClass]="email.invalid ? 'invalid' : 'valid'"
+          >Email</label
+        >
+        <mat-form-field appearance="outline">
+          <input
+            matInput
+            formControlName="email"
+            id="email"
+            (input)="trimValue('email')"
+          />
+          <small class="validation" *ngIf="email.dirty && email.errors">
+            Недопустимые символы
+          </small>
+        </mat-form-field>
+      </div>
+      <div class="item-wrap">
+        <label for="role">Роль</label>
+        <mat-form-field appearance="outline">
+          <mat-select formControlName="is_admin" id="role">
+            <mat-option [value]="true">Администратор</mat-option>
+            <mat-option [value]="false">Пользователь</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="item-wrap">
+        <label for="change_date">Дата изменения</label>
+        <mat-form-field appearance="outline">
+          <input
+            matInput
+            [matDatepicker]="change"
+            formControlName="update_at"
+            id="change_date"
+          />
+          <mat-datepicker-toggle
+            matIconSuffix
+            [for]="change"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #change></mat-datepicker>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="btn-list">
+      <button
+        mat-button
+        type="submit"
+        [disabled]="form.invalid || !isAtLeastOneFieldFilled"
+      >
+        Применить
+      </button>
+      <button mat-button (click)="cancel()" type="button">Отмена</button>
+      <button mat-button (click)="resetForm()" type="reset">Сбросить</button>
+    </div>
+  </form>
+</div>

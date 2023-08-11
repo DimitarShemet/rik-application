@@ -1,0 +1,87 @@
+<div class="mat-elevation-z8">
+  <table mat-table [dataSource]="users">
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef>
+        <mat-checkbox
+          [checked]="isAllSelected && !!users.length"
+          (change)="toggleAll()"
+        >
+        </mat-checkbox>
+        Логин
+      </th>
+      <td mat-cell *matCellDef="let element">
+        <mat-checkbox
+          (change)="toggleItem(element.id)"
+          [checked]="element.isSelected"
+        >
+        </mat-checkbox>
+        {{ element.name }}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="email">
+      <th mat-header-cell *matHeaderCellDef>E-mail</th>
+      <td mat-cell *matCellDef="let element">{{ element.email }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="phone">
+      <th mat-header-cell *matHeaderCellDef>Телефон</th>
+      <td mat-cell *matCellDef="let element">
+        {{ element.phone | formatPhoneNumber }}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="is_admin">
+      <th mat-header-cell *matHeaderCellDef>Роли</th>
+      <td mat-cell *matCellDef="let element">
+        {{ element.is_admin ? "Администратор" : "Пользователь" }}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="update_at">
+      <th mat-header-cell *matHeaderCellDef>Дата изменения</th>
+      <td mat-cell *matCellDef="let element">
+        {{ element.update_at | date : "dd.MM.yyyy" }}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="create_at">
+      <th mat-header-cell *matHeaderCellDef>Дата создания</th>
+      <td mat-cell *matCellDef="let element">
+        {{ element.create_at | date : "dd.MM.yyyy" }}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="status">
+      <th mat-header-cell *matHeaderCellDef>Статус</th>
+      <td
+        mat-cell
+        *matCellDef="let element"
+        [ngClass]="element.status === 'ACTIVE' ? 'active' : 'blocked'"
+      >
+        {{ element.status === "ACTIVE" ? "Активен" : "Заблокирован" }}
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="is_ecp">
+      <th mat-header-cell *matHeaderCellDef class="ecp-row">Наличие ЭП</th>
+      <td mat-cell *matCellDef="let element" class="ecp-column">
+        <img
+          src="../../../assets/icons/checked.svg"
+          alt="unchecked"
+          *ngIf="!element.is_ecp"
+        />
+        <img
+          src="../../../assets/icons/unchecked.svg"
+          alt="checked"
+          *ngIf="element.is_ecp"
+        />
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+
+  <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons>
+  </mat-paginator>
+</div>
